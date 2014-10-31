@@ -1,13 +1,14 @@
 ﻿<!DOCTYPE html>
-<link href="~/Content/sidebar.css" rel="stylesheet" />
+<link href="~/Content/SideBar.css" rel="stylesheet" />
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-</head>
+    <head>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - My ASP.NET Application</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -24,52 +25,89 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Register", "Register", "Home")</li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-2" id="sidebar-wrapper">
-            <nav id="spy">
-                <ul class="sidebar-nav nav">
-                    <li class="sidebar-brand">
-                        @Html.ActionLink("Index", "Index", "Home")
-                    </li>
-                    <li>
-                        <a href="#anch1" data-scroll>
-                            <span class="fa fa-anchor solo">Anchor 1</span>
-                        </a>
-                    </li>
+    <div class="container">
+        <div id="content" class='row'>
+            <div class="col-md-1" id="sidebar-wrapper">
+                <nav id="spy">
+                    <ul class="sidebar-nav nav">
+                        <li class="sidebar-brand">
+                            @Html.ActionLink("Index", "Index", "Home")
+                        </li>
+                        <li>
+                            <i class="icon-home" style="color: #FFFFFF"></i>
+                            <span> New Posts</span>
+                        </li>
+                        <li>
+                            <a href="#anch2" data-scroll>
+                                <span class="fa fa-anchor solo">Top Posts</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#anch3" data-scroll>
+                                <span class="fa fa-anchor solo">My Favorite</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#anch4" data-scroll>
+                                <span class="fa fa-anchor solo">My Posts</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#anch4" data-scroll>
+                                <span class="fa fa-anchor solo">FAQs</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#anch4" data-scroll>
+                                <span class="fa fa-anchor solo">Terms and Conditions</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="col-md-10  container body-content ">
+                @RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                </footer>
+            </div>
+
+            <div class="col-md-1">
+                <ul>
                     <li>
                         <a href="#anch2" data-scroll>
-                            <span class="fa fa-anchor solo">Anchor 2</span>
+                            <span class="fa fa-anchor solo">TECNOLOGIA</span>
                         </a>
                     </li>
                     <li>
                         <a href="#anch3" data-scroll>
-                            <span class="fa fa-anchor solo">Anchor 3</span>
+                            <span class="fa fa-anchor solo">HOGAR</span>
                         </a>
                     </li>
                     <li>
                         <a href="#anch4" data-scroll>
-                            <span class="fa fa-anchor solo">Anchor 4</span>
+                            <span class="fa fa-anchor solo">ANIMALES</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#anch4" data-scroll>
+                            <span class="fa fa-anchor solo">XBOX</span>
                         </a>
                     </li>
                 </ul>
-            </nav>
+            </div>
         </div>
-
-
-        <div class="col-lg-12 container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-            </footer>
-        </div>
-</div>
-        @Scripts.Render("~/bundles/jquery")
+    </div>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)
 </body>
