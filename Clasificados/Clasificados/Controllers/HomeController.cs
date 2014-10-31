@@ -31,6 +31,5 @@ namespace Clasificados.Controllers
         {
             return View();
         }
-
     }
 }
