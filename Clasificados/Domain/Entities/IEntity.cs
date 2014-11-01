@@ -8,12 +8,9 @@ namespace Domain.Entities
 {
     public interface IEntity
     {
-        long Id { get; set; }
-
-        bool Archived { get; }
-
-        void Archive();
-
-        void Activate();
+        Guid Id { get; set; }
+        bool Archived { get; set; }
+        int Views { get; set; }
+        DateTime Created { get; set; }
     }
 }

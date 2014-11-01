@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Ninject;
 using System.Web.Mvc;
+using Clasificados.Models;
 
 namespace Clasificados.Controllers
 {
@@ -35,5 +37,16 @@ namespace Clasificados.Controllers
         {
             return View();
         }
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(RegisterModel rm)
+        {
+            return View(rm);
+        }
+
     }
 }
