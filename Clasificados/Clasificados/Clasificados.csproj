@@ -225,6 +225,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DatabaseDeployer\DatabaseDeployer.csproj">
+      <Project>{5e1356ff-daaa-4543-a3ea-fb4b3decb8d4}</Project>
+      <Name>DatabaseDeployer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Data\Data.csproj">
       <Project>{d6facd75-aca1-4970-8c88-a9d5a4450052}</Project>
       <Name>Data</Name>
