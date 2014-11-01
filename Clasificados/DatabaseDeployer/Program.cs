@@ -19,11 +19,8 @@ namespace DatabaseDeployer
                 ConnectionString(x => x.Is(connectionString));
 
             DomainDrivenDatabaseDeployer.DatabaseDeployer dd = null;
-            ISessionFactory sessionFactory = new SessionFactoryBuilder(new MappingScheme(), databaseConfiguration).Build(
-                cfg =>
-                {
-                    dd = new DomainDrivenDatabaseDeployer.DatabaseDeployer(cfg);
-                });
+            ISessionFactory sessionFactory = new SessionFactoryBuilder(new MappingScheme(), databaseConfiguration)
+                .Build(cfg => { dd = new DomainDrivenDatabaseDeployer.DatabaseDeployer(cfg); });
 
             dd.Drop();
             Console.WriteLine("Database dropped.");
@@ -37,7 +34,8 @@ namespace DatabaseDeployer
             {
                 dd.Seed(new List<IDataSeeder>
                 {
-                    new UserSeeder(session),
+                    new UsersSeeder(session),
+                    new PostSeeder(session),
                     new ObjectSeeder(session)
                 });
                 tx.Commit();

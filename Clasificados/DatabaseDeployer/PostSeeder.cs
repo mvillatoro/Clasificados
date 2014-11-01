@@ -24,9 +24,9 @@ namespace DatabaseDeployer
             var post = new Posts()
             {
                 Archived = false,
-                Created = new DateTime(),
+                Created = new DateTime(2014,08,22),
                 Details = "Vendo motorola Atrix II Lps 4000.00, negociable",
-                Id = new Guid(),
+                Id = 01,
                 OwnerId = new Guid(),
                 Tittle = "vendo Moto Atrix II",
                 Views = 0

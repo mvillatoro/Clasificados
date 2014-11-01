@@ -8,7 +8,7 @@ namespace Domain.Entities
 {
     public interface IEntity
     {
-        Guid Id { get; set; }
+        int Id { get; set; }
         bool Archived { get; set; }
         int Views { get; set; }
         DateTime Created { get; set; }

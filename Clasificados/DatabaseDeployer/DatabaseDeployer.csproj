@@ -40,9 +40,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\AcklenAvenue.Data.NHibernate.1.3.0.1\lib\net40\AcklenAvenue.Data.NHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="AcklenAvenue.Data.NHibernate.StructureMap">
-      <HintPath>..\packages\AcklenAvenue.Data.NHibernate.StructureMap.1.3.0.1\lib\net40\AcklenAvenue.Data.NHibernate.StructureMap.dll</HintPath>
-    </Reference>
     <Reference Include="DomainDrivenDatabaseDeployer">
       <HintPath>..\packages\DomainDrivenDatabaseDeployer.1.4.0.2\lib\net40\DomainDrivenDatabaseDeployer.dll</HintPath>
     </Reference>
@@ -60,12 +57,6 @@
     <Reference Include="NHibernate">
       <HintPath>..\packages\NHibernate.3.3.1.4000\lib\Net35\NHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="StructureMap">
-      <HintPath>..\packages\structuremap.3.1.4.143\lib\net40\StructureMap.dll</HintPath>
-    </Reference>
-    <Reference Include="StructureMap.Net4">
-      <HintPath>..\packages\structuremap.3.1.4.143\lib\net40\StructureMap.Net4.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -76,7 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PostSeeder.cs" />
-    <Compile Include="UserSeeder.cs" />
+    <Compile Include="UsersSeeder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

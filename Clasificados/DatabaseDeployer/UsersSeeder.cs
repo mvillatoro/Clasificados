@@ -6,11 +6,11 @@ using NHibernate;
 
 namespace DatabaseDeployer
 {
-    class UserSeeder : IDataSeeder
+    class UsersSeeder : IDataSeeder
     {
         readonly ISession _session;
 
-        public UserSeeder(ISession session)
+        public UsersSeeder(ISession session)
         {
             _session = session;
         }
@@ -22,8 +22,8 @@ namespace DatabaseDeployer
                 Name = "Mario",
                 LastName = "Villatoro",
                 Archived = false,
-                Created = new DateTime(),
-                Id = new Guid(),
+                Created = new DateTime(2014,08,22),
+                Id = 01,
                 IsMaster = true,
                 Mail = "mvilla@gmail.com",
                 Password = "12345",

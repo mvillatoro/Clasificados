@@ -9,7 +9,7 @@ namespace Domain.Entities
 {
     public class User: IEntity
     {
-        public virtual Guid Id { get; set; }
+        public virtual int Id { get; set; }
         public virtual string Name { get; set; }
         public virtual string LastName { get; set; }
         public virtual string Mail { get; set; }

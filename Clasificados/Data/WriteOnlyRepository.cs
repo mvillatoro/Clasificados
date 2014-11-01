@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Domain.Entities;
@@ -41,7 +40,7 @@ namespace Data
             return items;
         }
 
-        public void Archive<T>(Guid id) where T : IEntity
+        public void Archive<T>(long id) where T : IEntity
         {
             var itemToArhive = _session.Get<T>(id);
             itemToArhive.Archive();
