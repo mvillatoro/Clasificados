@@ -46,7 +46,12 @@ namespace Clasificados.Controllers
         [HttpPost]
         public ActionResult Register(RegisterModel rm)
         {
-            var x = 
+            var user = new User();
+
+            user.Name = rm.Name;
+            user.LastName = rm.LastName;
+            user.Mail = rm.Mail;
+            user.Password = rm.Password;
 
             return View(rm);
         }

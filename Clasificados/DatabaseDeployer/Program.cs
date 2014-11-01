@@ -34,7 +34,7 @@ namespace DatabaseDeployer
             {
                 dd.Seed(new List<IDataSeeder>
                 {
-                    new OperacionesSeeder(session),
+                    new UserSeeder(session),
                     new ObjectSeeder(session)
                 });
                 tx.Commit();

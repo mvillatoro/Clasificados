@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    class Posts: IEntity
+    public class Posts: IEntity
     {
         public Guid Id { get; set; }
         public bool Archived { get; set; }
@@ -15,5 +15,9 @@ namespace Domain.Entities
         public string Tittle { get; set; }
         public Guid OwnerId { get; set; }
         public string Details { get; set; }
+        public virtual void Archive()
+        {
+            Archived = true;
+        }
     }
 }

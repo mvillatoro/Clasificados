@@ -17,6 +17,11 @@ namespace Domain.Entities
         public DateTime Created { get; set; }
         public bool Archived { get; set; }
         public int Views { get; set; }
+        public bool IsMaster { get; set; }
+        public virtual void Archive()
+        {
+            Archived = true;
+        }
 
     }
 }

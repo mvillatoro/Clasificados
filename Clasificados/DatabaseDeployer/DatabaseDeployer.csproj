@@ -66,7 +66,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OperacionesSeeder.cs" />
+    <Compile Include="PostSeeder.cs" />
+    <Compile Include="UserSeeder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

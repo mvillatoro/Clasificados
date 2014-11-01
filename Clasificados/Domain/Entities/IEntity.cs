@@ -12,5 +12,6 @@ namespace Domain.Entities
         bool Archived { get; set; }
         int Views { get; set; }
         DateTime Created { get; set; }
+        void Archive();
     }
 }
