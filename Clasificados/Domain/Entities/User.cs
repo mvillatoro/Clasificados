@@ -9,15 +9,15 @@ namespace Domain.Entities
 {
     public class User: IEntity
     {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-        public string LastName { get; set; }
-        public string Mail { get; set; }
-        public string Password { get; set; }
-        public DateTime Created { get; set; }
-        public bool Archived { get; set; }
-        public int Views { get; set; }
-        public bool IsMaster { get; set; }
+        public virtual Guid Id { get; set; }
+        public virtual string Name { get; set; }
+        public virtual string LastName { get; set; }
+        public virtual string Mail { get; set; }
+        public virtual string Password { get; set; }
+        public virtual DateTime Created { get; set; }
+        public virtual bool Archived { get; set; }
+        public virtual int Views { get; set; }
+        public virtual bool IsMaster { get; set; }
         public virtual void Archive()
         {
             Archived = true;

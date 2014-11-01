@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using Ninject;
 using Data;
-using DatabaseDeployer;
+//using DatabaseDeployer;
 using Domain.Entities;
 using Domain.Services;
 using System.Web.Mvc;
@@ -14,7 +14,7 @@ namespace Clasificados.Controllers
 {
     public class HomeController : Controller
     {
-                readonly IReadOnlyRepository _readOnlyRepository;
+        readonly IReadOnlyRepository _readOnlyRepository;
         readonly IWriteOnlyRepository _writeOnlyRepository;
 
         public HomeController(IReadOnlyRepository readOnlyRepository, IWriteOnlyRepository writeOnlyRepository)

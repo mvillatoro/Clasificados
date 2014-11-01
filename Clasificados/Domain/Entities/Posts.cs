@@ -8,13 +8,13 @@ namespace Domain.Entities
 {
     public class Posts: IEntity
     {
-        public Guid Id { get; set; }
-        public bool Archived { get; set; }
-        public int Views { get; set; }
+        public virtual Guid Id { get; set; }
+        public virtual bool Archived { get; set; }
+        public virtual int Views { get; set; }
         public DateTime Created { get; set; }
-        public string Tittle { get; set; }
-        public Guid OwnerId { get; set; }
-        public string Details { get; set; }
+        public virtual string Tittle { get; set; }
+        public virtual Guid OwnerId { get; set; }
+        public virtual string Details { get; set; }
         public virtual void Archive()
         {
             Archived = true;

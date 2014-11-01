@@ -7,7 +7,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{4181CEA0-D79D-4C88-BBB5-7CE531957ADA}</ProjectGuid>
+    <ProjectGuid>{0ED4DD7C-7D72-4990-A401-5EB955364687}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -209,10 +209,10 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Shared\_BasicLayout.cshtml" />
-    <Content Include="Views\Home\Posts.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Posts.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -225,10 +225,6 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DatabaseDeployer\DatabaseDeployer.csproj">
-      <Project>{5e1356ff-daaa-4543-a3ea-fb4b3decb8d4}</Project>
-      <Name>DatabaseDeployer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Data\Data.csproj">
       <Project>{d6facd75-aca1-4970-8c88-a9d5a4450052}</Project>
       <Name>Data</Name>
@@ -254,7 +250,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>18607</DevelopmentServerPort>
+          <DevelopmentServerPort>13429</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:2069/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
