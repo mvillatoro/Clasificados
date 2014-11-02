@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain.Entities;
 using DomainDrivenDatabaseDeployer;
+using Domain.Entities;
 using NHibernate;
-using NHibernate.Event;
 
 namespace DatabaseDeployer
 {
-    class PostSeeder : IDataSeeder
+    class PostSeeder:IDataSeeder
     {
+
         readonly ISession _session;
 
         public PostSeeder(ISession session)
@@ -24,7 +24,7 @@ namespace DatabaseDeployer
             var post = new Posts()
             {
                 Archived = false,
-                Created = new DateTime(2014,08,22),
+                Created = new DateTime(),
                 Details = "Vendo motorola Atrix II Lps 4000.00, negociable",
                 Id = 01,
                 OwnerId = new Guid(),
@@ -36,5 +36,6 @@ namespace DatabaseDeployer
             _session.Save(post);
 
         }
+
     }
 }

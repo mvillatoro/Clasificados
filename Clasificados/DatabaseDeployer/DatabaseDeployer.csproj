@@ -67,9 +67,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PostSeeder.cs" />
-    <Compile Include="UsersSeeder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserSeeder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

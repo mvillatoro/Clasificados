@@ -1,29 +1,33 @@
 ﻿using System;
-using Domain.Entities;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using DomainDrivenDatabaseDeployer;
-using FizzWare.NBuilder;
+using Domain.Entities;
 using NHibernate;
 
 namespace DatabaseDeployer
 {
-    class UsersSeeder : IDataSeeder
+    class UserSeeder:IDataSeeder
     {
         readonly ISession _session;
 
-        public UsersSeeder(ISession session)
+        public UserSeeder(ISession session)
         {
             _session = session;
         }
 
         public void Seed()
         {
+            /*
             var user = new User
             {
                 Name = "Mario",
                 LastName = "Villatoro",
                 Archived = false,
-                Created = new DateTime(2014,08,22),
-                Id = 01,
+                Created = new DateTime(),
+                Id = new Guid(),
                 IsMaster = true,
                 Mail = "mvilla@gmail.com",
                 Password = "12345",
@@ -32,7 +36,7 @@ namespace DatabaseDeployer
             };
 
             _session.Save(user);
-
+            */
         }
     }
 }
