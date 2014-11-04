@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    class Messages: IEntity
+    public class Messages: IEntity
     {
-        public virtual string Receptor { get; set; }
-        public virtual string Sender { get; set; }
-        public virtual string Message { get; set; }
-        public virtual string Mail { get; set; }
-        public virtual String ReceptorId { get; set; }
-        public virtual String SenderId { get; set; }
+        public virtual string Receptor { get; set; } //DONE
+        public virtual string Sender { get; set; } //DONE
+        public virtual string Message { get; set; } //DONE
+        public virtual string Mail { get; set; } //DONE
+        public virtual int ReceptorId { get; set; } //DONE
+        public virtual int SenderId { get; set; } //DONE
         public virtual long Id { get; set; }
         public virtual bool Archived { get; set; }
+        public virtual DateTime Created { get; set; }
         public virtual void Archive()
         {
             Archived = true;

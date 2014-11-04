@@ -1,0 +1,20 @@
+﻿@using Domain.Entities
+@model MiPrimerMVC.Models.ContactModel
+@{
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+@foreach (Contact faq in Model.Preguntas)
+{    
+    if (!@faq.IsAnswered)
+    { 
+        using (Html.BeginForm("AnswerFaq", "Registered", null, FormMethod.Post))
+        {
+            <div class="well">
+                <h3>@faq.Message</h3>
+                <p>By @faq.Name</p>
+                @Html.ActionLink("Answer Quesion", "AnswerFaq", new { @id = @faq.Id }, null)
+           </div>
+       }
+    }
+}

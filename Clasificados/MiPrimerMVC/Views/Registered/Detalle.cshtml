@@ -1,5 +1,5 @@
 ﻿@using Microsoft.Ajax.Utilities
-@model Domain.Entities.Posts
+@model MiPrimerMVC.Models.PostModel
 @{    ViewBag.Title = "Detalle del Post";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -7,24 +7,27 @@
 
 <h1>Detalle </h1>
 <div class="well">
-    <a class="pull-left" href="#">
+    <a class="pull-left">
         <img height="300" width="500" class="media-object" src="@Html.ValueFor(x => x.Img1)">
     </a>
-    <a class="pull-left" href="#">
+    <a class="pull-left">
          <img height="300" width="500" class="media-object" src="@Html.ValueFor(x => x.Img2)">
     </a>
-    <a class="pull-left" href="#">
+    <a class="pull-left">
          <img height="300" width="500" class="media-object" src="@Html.ValueFor(x => x.Img3)">
     </a>
-    <a class="pull-left" href="#">
+    <a class="pull-left">
          <img height="300" width="500" class="media-object" src="@Html.ValueFor(x => x.Img4)">
      </a>
-     <a class="pull-left" href="#">
+     <a class="pull-left">
          <img height="300" width="500" class="media-object" src="@Html.ValueFor(x => x.Img5)">
      </a>
-     <a class="pull-left" href="#">
-         <img height="300" width="500" class="media-object" src="@Html.ValueFor(x => x.Img6)">
-     </a>
+    <a class="pull-left">
+        <img height="300" width="500" class="media-object" src="@Html.ValueFor(x => x.Img6)">
+    </a>
+    <a class="pull-left">
+        <video height="300" width="500" src="@Html.ValueFor(x => x.Video)"></video>
+    </a>
 
     <h2>@Html.ValueFor(x=> x.Tittle) </h2>
     <p>@Html.ValueFor(x => x.Details) </p>
@@ -33,8 +36,8 @@
     @Html.LabelFor(x => x.Created)
     <p>@Html.ValueFor(x => x.Created) </p>
     
-    @using (Html.BeginForm("Contact", "Guest", null, FormMethod.Post))
-    {
+  @using (Html.BeginForm("Detalle", "Registered", null, FormMethod.Post))
+{
         <form class="form-horizontal" action="" method="post">
             <fieldset>
                 <legend class="text-center">Contact Seller</legend>
@@ -60,7 +63,6 @@
                         <textarea class="form-control" id="message" name="Message" placeholder="Please enter your message here..." rows="5"> </textarea>
                     </div>
                 </div>
-
                 <!-- Form actions -->
                 <div class="form-group">
                     <div class="col-md-12 text-right">

@@ -39,6 +39,7 @@ namespace DatabaseDeployer
                     new UserSeeder(session),
                     new ContactSeeder(session),
                     new TagSeeder(session),
+                    new MessageSeeder(session),
                     new ObjectSeeder(session)
                 });
                 tx.Commit();

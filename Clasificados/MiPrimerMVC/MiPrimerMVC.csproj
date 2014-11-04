@@ -201,6 +201,8 @@
     <Content Include="Views\Shared\_MasterLayout.cshtml" />
     <Content Include="Views\Registered\NewPost.cshtml" />
     <Content Include="Views\Registered\Detalle.cshtml" />
+    <Content Include="Views\Registered\AnswerFaq.cshtml" />
+    <Content Include="Views\Registered\AnswerView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">

@@ -1,0 +1,16 @@
+﻿@model MiPrimerMVC.Models.ContactModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Responer</h1>
+
+@using (Html.BeginForm("AnswerFaq", "Registered", null, FormMethod.Post))
+{
+    <p>Html.LabelFor(x=> x.Preguntas)</p>
+    <textarea class="form-control" id="Answer" name="Answer" placeholder="Enter sarcastic answer here..." rows="5"> </textarea>
+      <div class="col-md-12 text-right">
+                        <button class="btn btn-primary" type="submit">Enviar</button>
+                    </div>
+    
+}

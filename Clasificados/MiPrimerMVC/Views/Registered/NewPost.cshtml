@@ -20,58 +20,68 @@
             <textarea id="Details" name="Details" placeholder="Descripcion" class="form-control"></textarea>
         </div>
 
-    <label class="col-md-3 control-label" for="Price">Price $</label>
+    <label class="col-md-3 control-label" for="Price">Price</label>
+    <div class="col-md-9">
+        <input id="Price" name="Price" type="number" placeholder="0.00" class="form-control" required />
+    </div>
+    <label class="col-md-3 control-label" for="BussType">Negociacion</label>
         <div class="col-md-9">
-            <input id="Tag1" name="Price" type="number" placeholder="0.00" class="form-control" required />
+            <input id="BussType" name="BussType" type="text" placeholder="Como va a ser la negociacion" class="form-control" required />
         </div>
 
-    <label class="col-md-3 control-label" for="Img1">Image</label>
+    <label class="col-md-3 control-label" for="Img1">Front Image </label>
     <div class="col-md-9">
-        <input id="Tag3" name="Img1" type="text" placeholder="Image URL" class="form-control" required />
+        <input id="Tag3" name="Img1" type="text" placeholder="Image URL" class="form-control">
     </div>
     <label class="col-md-3 control-label" for="Img2">Image</label>
     <div class="col-md-9">
-        <input id="Tag3" name="Img2" type="text" placeholder="Image URL" class="form-control" required />
+        <input id="Tag3" name="Img2" type="text" placeholder="Image URL" class="form-control">
     </div>
     <label class="col-md-3 control-label" for="Img3">Image</label>
     <div class="col-md-9">
-        <input id="Tag3" name="Img3" type="text" placeholder="Image URL" class="form-control" required />
+        <input id="Tag3" name="Img3" type="text" placeholder="Image URL" class="form-control">
     </div>
     <label class="col-md-3 control-label" for="Img4">Image</label>
     <div class="col-md-9">
-        <input id="Tag3" name="Img4" type="text" placeholder="Image URL" class="form-control" required />
+        <input id="Tag3" name="Img4" type="text" placeholder="Image URL" class="form-control">
     </div>
     <label class="col-md-3 control-label" for="Img5">Image</label>
     <div class="col-md-9">
-        <input id="Tag3" name="Img5" type="text" placeholder="Image URL" class="form-control" required />
+        <input id="Tag3" name="Img5" type="text" placeholder="Image URL" class="form-control">
     </div>
     <label class="col-md-3 control-label" for="Img6">Image</label>
     <div class="col-md-9">
-        <input id="Tag3" name="Img6" type="text" placeholder="Image URL" class="form-control" required />
+        <input id="Tag3" name="Img6" type="text" placeholder="Image URL" class="form-control">
     </div>
         <label class="col-md-3 control-label" for="Video">Video</label>
     <div class="col-md-9">
-        <input id="Tag3" name="Video" type="text" placeholder="Video URL" class="form-control" required />
+        <input id="Tag3"name="Video" type="text" placeholder="Video URL" class="form-control">
+    </div>
+
+    <div>
+        <select>
+            <option value="null">Seleccione un tag</option>
+            @foreach (Tags tag in Model.AllTags)
+{
+    <option value="@tag.TagName" id="Tag1">@tag.TagName</option>
+}
+        </select>
+        <select>
+            <option value="null" >Seleccione un tag</option>
+            @foreach (Tags tag in Model.AllTags)
+            {
+                <option value="@tag.TagName" id="Tag2">@tag.TagName</option>
+            }
+        </select>
+        <select>
+            <option value="null" id="Tag3">Seleccione un tag</option>
+            @foreach (Tags tag in Model.AllTags)
+            {
+                <option value="@tag.TagName" id="Tag3">@tag.TagName</option>
+            }
+        </select>
     </div>
     
-    
-  
-        foreach (Tags tag in Model.AllTags)
-        {
-            <select>
-                <option value="null">Seleccione un tag</option>
-                <option value="@tag">@tag</option>
-            </select>
-            <select>
-                <option value="null">Seleccione un tag</option>
-                <option value="@tag">@tag</option>
-            </select>
-            <select>
-                <option value="null">Seleccione un tag</option>
-                <option value="@tag">@tag</option>
-            </select>
-        }
-
     <div class="col-md-12 text-right">
         <button class="btn btn-primary" type="submit">POST!</button>
     </div>

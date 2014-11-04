@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContactSeeder.cs" />
+    <Compile Include="MessageSeeder.cs" />
     <Compile Include="PostSeeder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

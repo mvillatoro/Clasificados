@@ -62,7 +62,10 @@ namespace MiPrimerMVC.Controllers
         public ActionResult Login(LoginModel lm)
         {
             var user = _readOnlyRepository.FirstOrDefault<Users>(x => x.Mail == lm.Mail);
-            if (user == null) return View(new LoginModel());
+            if (user == null)
+            {
+                return View(new LoginModel());
+            }
             if (!user.CheckPassword(lm.Password))return View(new LoginModel());
            
             Session["User"] = user.Name;
@@ -73,17 +76,23 @@ namespace MiPrimerMVC.Controllers
         [HttpPost]
         public ActionResult Contact(ContactModel cm)
         {
-            string cp = "ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvxyz";
-            if (cm.Name.Any(c => !cp.Contains(c)))
-                return RedirectToAction("Contact");
-
-            if (cm.Name.Length < 3)
-                return RedirectToAction("Contact");
-
-            if(cm.Message.Length > 250)
-                return RedirectToAction("Contact");
-
+            const string cp = "ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvxyz";
             var faq = new Contact();
+            
+            if (cm.Name.Any(c => !cp.Contains(c)))
+            { 
+                ViewBag.Message = "N@adie s3 llama as¡";
+                return RedirectToAction("Contact");
+            }
+            if (cm.Name.Length < 3) { 
+                ViewBag.Message = "Vamos, nadie tiene un nombre de tres letras.";
+                return RedirectToAction("Contact");
+            }
+            if (cm.Message.Length > 250) {
+                ViewBag.Message = "Intenta escribir lo mismo, pero con menos palabras :)";
+                return RedirectToAction("Contact");
+            }
+
             faq.Name = cm.Name;
             faq.Mail = cm.Mail;
             faq.Message = cm.Message;
