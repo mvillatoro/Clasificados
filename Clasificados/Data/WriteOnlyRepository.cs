@@ -23,7 +23,7 @@ namespace Data
 
         public void ArchiveAll<T>(IEnumerable<T> list) where T : class, IEntity
         {
-            foreach (var item in _session.QueryOver<T>().List())
+            foreach (T item in _session.QueryOver<T>().List())
             {
                 Archive<T>(item.Id);
             }
@@ -31,8 +31,8 @@ namespace Data
 
         public IEnumerable<T> CreateAll<T>(IEnumerable<T> list) where T : IEntity
         {
-            var items = list as List<T> ?? list.ToList();
-            foreach (var item in items)
+            List<T> items = list as List<T> ?? list.ToList();
+            foreach (T item in items)
             {
                 Create(item);
             }
@@ -49,9 +49,8 @@ namespace Data
 
         public T Update<T>(T itemToUpdate) where T : IEntity
         {
-            var session = _session;
+            ISession session = _session;
             session.Update(itemToUpdate);
-            session.Flush();
             return itemToUpdate;
         }
     }

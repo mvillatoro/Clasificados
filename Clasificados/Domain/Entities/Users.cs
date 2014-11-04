@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,7 +9,7 @@ namespace Domain.Entities
 {
     public class Users : IEntity
     {
-        public long Id { get; set; }
+        public virtual long Id { get; set; }
         public virtual string Name { get; set; }
         public virtual string LastName { get; set; }
         public virtual string Mail { get; set; }
@@ -17,9 +18,22 @@ namespace Domain.Entities
         public virtual int Views { get; set; }
         public virtual bool Archived { get; set; }
         public virtual bool IsMaster { get; set; }
+        public virtual string Salt { get; set; }
         public virtual void Archive()
         {
             Archived = true;
+        }
+        public virtual bool CheckPassword(string password)
+        {
+            SHA512 hashtool = SHA512.Create();
+            byte[] pass1 = hashtool.ComputeHash(Encoding.UTF8.GetBytes(password));
+            string pass = BitConverter.ToString(pass1);
+            byte[] pass2 = hashtool.ComputeHash(Encoding.UTF8.GetBytes(pass.Replace("-", "") + Salt));
+            string passFinal = BitConverter.ToString(pass2).Replace("-", "");
+            if (Password.Equals(passFinal))
+                return true;
+            else
+                return false;
         }
 
     }

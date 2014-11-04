@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using AcklenAvenue.Data.NHibernate;
 using Data;
+using Domain.Entities;
 using DomainDrivenDatabaseDeployer;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
@@ -34,6 +35,10 @@ namespace DatabaseDeployer
             {
                 dd.Seed(new List<IDataSeeder>
                 {
+                    new PostSeeder(session),
+                    new UserSeeder(session),
+                    new ContactSeeder(session),
+                    new TagSeeder(session),
                     new ObjectSeeder(session)
                 });
                 tx.Commit();

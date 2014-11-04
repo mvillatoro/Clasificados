@@ -9,7 +9,7 @@ namespace Domain.Entities
     public interface IEntity
     {
         long Id { get; set; }
-        bool Archived { get; }
+        bool Archived { get; set; }
         void Archive();
 
     }

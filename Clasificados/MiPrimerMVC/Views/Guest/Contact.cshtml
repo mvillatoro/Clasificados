@@ -1,0 +1,87 @@
+﻿@using Domain.Entities
+@model MiPrimerMVC.Models.ContactModel
+
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_BasicLayout.cshtml";
+}
+<div>
+    <link href="~/Content/Contact.css" rel="stylesheet" />
+
+    <h2>@ViewBag.Title.</h2>
+    <h3>@ViewBag.Message</h3>
+
+
+
+    <address>
+        One Microsoft Way<br />
+        Redmond, WA 98052-6399<br />
+        <abbr title="Phone">P:</abbr>
+        425.555.0100
+    </address>
+
+    <address>
+        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+    </address>
+</div>
+
+@foreach (Contact faq in Model.Preguntas)
+{
+    if(@faq.IsAnswered)
+     {
+      <div class="well">
+        <h3>@faq.Message</h3>
+        <p>By @faq.Name</p>
+        <p>@faq.Answer</p>
+    </div>
+     }
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="well well-sm">
+                @using (Html.BeginForm("Contact", "Guest", null, FormMethod.Post))
+                {
+                    <form class="form-horizontal" action="" method="post">
+                        <fieldset>
+                            <legend class="text-center">Contact us</legend>
+
+                            <!-- Name input-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="name">Name</label>
+                                <div class="col-md-9">
+                                    <input id="name" name="Name" type="text" placeholder="Your name" class="form-control" required/>
+                                </div>
+                            </div>
+                            <!-- Email input-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="Mail">Your E-mail</label>
+                                <div class="col-md-9">
+                                    <input id="Mail" name="Mail" type="text" placeholder="Your email" class="form-control" required />
+                                </div>
+                            </div>
+                            <!-- Message body -->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="message">Your message</label>
+                                <div class="col-md-9">
+                                    <textarea class="form-control" id="message" name="Message" placeholder="Please enter your message here..." rows="5" > </textarea>
+                                </div>
+                            </div>
+
+                            <!-- Form actions -->
+                            <div class="form-group">
+                                <div class="col-md-12 text-right">
+                                    <button class="btn btn-primary" type="submit">Enviar</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

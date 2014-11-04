@@ -9,33 +9,33 @@ using NHibernate;
 
 namespace DatabaseDeployer
 {
-    class PostSeeder:IDataSeeder
+    class PostSeeder : IDataSeeder
     {
-
         readonly ISession _session;
-
         public PostSeeder(ISession session)
         {
             _session = session;
         }
-
         public void Seed()
         {
+           
             var post = new Posts()
             {
                 Archived = false,
-                Created = new DateTime(),
-                Details = "Vendo motorola Atrix II Lps 4000.00, negociable",
-                Id = 01,
-                OwnerId = new Guid(),
-                Tittle = "vendo Moto Atrix II",
-                Views = 0
-
+                Created = DateTime.Today,
+                Details = "vento motorola atrix II 9/10",
+                OwnerId = 01,
+                Tittle = "vendo telefono",
+                OwnerName = "Mario Villatoro",
+                Views = 0,
+                Img1 = "http://cdn2.ubergizmo.com/wp-content/uploads/2011/10/atrix-2-review-04.jpg",
+                Img2 = "http://www.phonegg.com/Motorola/ATRIX-2/Motorola-ATRIX-2.jpg",
+                Img3 = "http://cdn.slashgear.com/wp-content/uploads/2011/10/atrix2_electrify2wtmk.jpg",
+                Video = "https://www.youtube.com/watch?v=M3rQTEjNi3Y"
+                
             };
-
             _session.Save(post);
-
         }
-
     }
 }
+
