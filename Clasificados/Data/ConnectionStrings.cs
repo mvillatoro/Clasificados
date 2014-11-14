@@ -6,15 +6,15 @@ namespace Data
     {
         public static string Get()
         {
-            //var local = ConfigurationManager.ConnectionStrings["local"].ToString();
+            var local = ConfigurationManager.ConnectionStrings["local"].ToString();
 
             var remote = (ConfigurationManager.ConnectionStrings["remote"].ToString());
 
             //var production = (ConfigurationManager.ConnectionStrings["production"].ToString());
 
             var environment = (ConfigurationManager.AppSettings["Environment"] ?? "").ToLower();
-            //var connectionStringToUse = local;
-            var connectionStringToUse = remote;
+            var connectionStringToUse = local;
+            //var connectionStringToUse = remote;
 
             if (environment == "qa" || environment == "remote")
             {

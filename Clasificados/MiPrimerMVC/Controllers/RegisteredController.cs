@@ -23,22 +23,24 @@ namespace MiPrimerMVC.Controllers
                 _writeOnlyRepository = writeOnlyRepository;
             }
 
+        public ActionResult HomeScreen()
+        {
+
+            var pm = new PostModel
+            {
+                Cosas =  _readOnlyRepository.GetAll<Posts>().ToList()
+            };
+
+            return View(pm);
+        }
 
         public ActionResult UserProfile()
         {
-            if (Session["User"] == null)
-            {
-                return RedirectToAction("Login", "Guest");
-            }
             return View();
         }
 
         public ActionResult NewPost()
         {
-            if (Session["User"] == null)
-            {
-                return RedirectToAction("Login", "Guest");
-            }
             var pm = new PostModel
             {
                 AllTags = _readOnlyRepository.GetAll<Tags>().ToList()
@@ -48,13 +50,22 @@ namespace MiPrimerMVC.Controllers
             return View(pm);
         }
 
+        public ActionResult Detalle(long id)
+        {
+            var detalle = _readOnlyRepository.GetById<Posts>(id);
+            return View(detalle);
+        }
+
+        [HttpPost]
+        public ActionResult HomeScreen(PostModel pm)
+        {
+            pm.Cosas = _readOnlyRepository.GetAll<Posts>().ToList();
+            return View(pm);
+        }
+
         [HttpPost]
         public ActionResult NewPost(PostModel pm)
         {
-            if (Session["User"] == null)
-            {
-                return RedirectToAction("Login", "Guest");
-            }
             if (pm.Tittle.Length > 100)
                 return RedirectToAction("NewPost");
 
@@ -75,8 +86,7 @@ namespace MiPrimerMVC.Controllers
             
             post.Img2 = pm.Img2;
             post.Img3 = pm.Img3;
-            post.Img4 = pm.Img4;
-            post.Img5 = pm.Img5;
+            post.Img4 = pm.Img5;
             post.Img6 = pm.Img6;
             post.Video = pm.Video;
 
@@ -91,23 +101,9 @@ namespace MiPrimerMVC.Controllers
             return RedirectToAction("HomeScreen");
         }
 
-        public ActionResult Detalle(long id)
-        {
-            if (Session["User"] == null)
-            {
-                return RedirectToAction("Login", "Guest");
-            }
-            var detalle = _readOnlyRepository.GetById<Posts>(id);
-            return View(detalle);
-        }
-        
         [HttpPost]
         public ActionResult Detalle(PostModel pm)
         {
-            if (Session["User"] == null)
-            {
-                return RedirectToAction("Login", "Guest");
-            }
             var nm = new Messages();
             nm.Receptor = pm.Receptor;
             nm.Sender = Session["User"].ToString();
@@ -125,52 +121,10 @@ namespace MiPrimerMVC.Controllers
 
             return RedirectToAction("HomeScreen");
         }
-
-        public ActionResult HomeScreen()
-        {
-            if (Session["User"] == null)
-            {
-                return RedirectToAction("Login", "Guest");
-            }
-            var pm = new PostModel
-            {
-                Cosas = _readOnlyRepository.GetAll<Posts>().ToList()
-            };
-
-            return View(pm);
-        }
-        public ActionResult AnswerFaq(long id)
-        {
-            if (Session["User"] == null)
-            {
-                return RedirectToAction("Login", "Guest");
-            }
-            var answ = _readOnlyRepository.GetById<Contact>(id);
-            return View(answ);
-        }
-
-        [HttpPost]
-        public ActionResult HomeScreen(PostModel pm)
-        {
-            if (Session["User"] == null)
-            {
-                return RedirectToAction("Login", "Guest");
-            }
-            pm.Cosas = _readOnlyRepository.GetAll<Posts>().ToList();
-            return View(pm);
-        }
-
-        [HttpPost]
-        public ActionResult AnswerFaq(ContactModel cm)
-        {
-            var faq = new Contact();
-            faq.Answer = cm.Answer;
-            faq.IsAnswered = true;
-            _writeOnlyRepository.Update(faq);
-            cm.Preguntas = _readOnlyRepository.GetAll<Contact>().ToList();
-            return RedirectToAction("AnswerFaq");
-        }
-
-    
     }
 }
+
+
+
+
+     
