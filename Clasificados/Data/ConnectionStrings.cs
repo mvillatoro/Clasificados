@@ -13,8 +13,8 @@ namespace Data
             //var production = (ConfigurationManager.ConnectionStrings["production"].ToString());
 
             var environment = (ConfigurationManager.AppSettings["Environment"] ?? "").ToLower();
-            var connectionStringToUse = local;
-            //var connectionStringToUse = remote;
+            //var connectionStringToUse = local;
+            var connectionStringToUse = remote;
 
             if (environment == "qa" || environment == "remote")
             {
