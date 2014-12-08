@@ -10,20 +10,33 @@ using Domain.Services;
 using Domain.Entities;
 using MiPrimerMVC.Models;
 using NHibernate.Dialect.Function;
+using Twilio;
 
 namespace MiPrimerMVC.Controllers
 {
     public class RegisteredController : Controller
     {
 
-            readonly IReadOnlyRepository _readOnlyRepository;
-            readonly IWriteOnlyRepository _writeOnlyRepository;
+        readonly IReadOnlyRepository _readOnlyRepository;
+        readonly IWriteOnlyRepository _writeOnlyRepository;
 
-            public RegisteredController(IReadOnlyRepository readOnlyRepository, IWriteOnlyRepository writeOnlyRepository)
-            {
-                _readOnlyRepository = readOnlyRepository;
-                _writeOnlyRepository = writeOnlyRepository;
-            }
+
+        public void Tuilio()
+        {
+            string AccountSid = "AC8ab7cb90cd64afe27c1188f8e8100011";
+            string AuthToken = "0abcbaa1a03106130d7438539773ec72";
+
+            var twilio = new TwilioRestClient(AccountSid, AuthToken);
+            var message = twilio.SendMessage("+12017625616", "+50498701833", "Neat...");
+
+            Console.WriteLine(message.Sid); 
+        }
+
+        public RegisteredController(IReadOnlyRepository readOnlyRepository, IWriteOnlyRepository writeOnlyRepository)
+        {
+            _readOnlyRepository = readOnlyRepository;
+            _writeOnlyRepository = writeOnlyRepository;
+        }
 
 
         //Te envia a los featured
@@ -98,6 +111,33 @@ namespace MiPrimerMVC.Controllers
             return View(pm);
         }
 
+        public ActionResult InboxView()
+        {
+            var mm = new MessagesModel()
+            {
+                MessageList = _readOnlyRepository.GetAll<Messages>().ToList(),
+                Myid = Convert.ToInt32(Session["UserId"])
+            };
+
+            return View(mm);
+        }
+
+        public ActionResult OutboxView()
+        {
+            return View();
+        }
+
+        public ActionResult SentView(MessagesModel mm)
+        {
+            mm = new MessagesModel()
+            {
+                MessageList = _readOnlyRepository.GetAll<Messages>().ToList(),
+                Myid = Convert.ToInt32(Session["UserId"])
+            };
+
+            return View(mm);
+        }
+
         //Post Nuevo
         [HttpPost]
         public ActionResult NewPost(PostModel pm)
@@ -130,6 +170,8 @@ namespace MiPrimerMVC.Controllers
             post.Archived = false;
 
             pm.AllTags = _readOnlyRepository.GetAll<Tags>().ToList();
+
+            Tuilio();
 
             _writeOnlyRepository.Create(post);
             return RedirectToAction("HomeScreen");
@@ -169,8 +211,3 @@ namespace MiPrimerMVC.Controllers
         }
     }
 }
-
-
-
-
-     

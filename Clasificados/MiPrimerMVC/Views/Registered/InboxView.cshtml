@@ -1,0 +1,18 @@
+﻿@using Domain.Entities
+@model MiPrimerMVC.Models.MessagesModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" />
+<div class="container">
+
+    <h1>FEATURED POSTS</h1>
+    @foreach (var message in Model.MessageList)
+    {
+        if (@message != null && @message.ReceptorId == Model.Myid)
+        {
+           
+        }
+    }
+</div>

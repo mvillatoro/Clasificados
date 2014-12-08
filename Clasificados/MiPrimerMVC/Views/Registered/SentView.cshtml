@@ -1,0 +1,40 @@
+﻿@using Domain.Entities
+@model MiPrimerMVC.Models.MessagesModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" />
+<div class="container">
+
+    <h1>SENT MESSAGES</h1>
+    @foreach (var message in Model.MessageList)
+    {
+        if (@message != null && @message.SenderId == Model.Myid)
+        {
+
+        }
+
+        <div class="well">
+            <div class="media">
+                <div class="media-body">
+                    <h3 class="media-heading">TItulo de mesnsaje</h3>
+                    <h4>
+                        Para
+                    </h4>
+
+                    <p>
+                        detalles del mensaje
+                    </p>
+
+                    <p>
+                         fecha
+                    </p>
+                    
+
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
