@@ -203,6 +203,8 @@
     <Content Include="Views\Registered\Detalle.cshtml" />
     <Content Include="Views\Registered\AnswerFaq.cshtml" />
     <Content Include="Views\Registered\AnswerView.cshtml" />
+    <Content Include="Views\Registered\Featured.cshtml" />
+    <Content Include="Views\Registered\WatchlistView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">

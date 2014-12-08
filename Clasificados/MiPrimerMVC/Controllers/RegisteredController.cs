@@ -5,9 +5,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Services.Description;
+using System.Web.UI;
 using Domain.Services;
 using Domain.Entities;
 using MiPrimerMVC.Models;
+using NHibernate.Dialect.Function;
 
 namespace MiPrimerMVC.Controllers
 {
@@ -23,6 +25,28 @@ namespace MiPrimerMVC.Controllers
                 _writeOnlyRepository = writeOnlyRepository;
             }
 
+
+        //Te envia a los featured
+        public ActionResult Featured()
+        {
+            var pm = new PostModel
+            {
+                Cosas = _readOnlyRepository.GetAll<Posts>().ToList()
+            };
+
+            return View(pm);
+        }
+
+        //Te envia a la lista de favoritos
+        public ActionResult WatchListView()
+        {
+            var um = new PostModel
+            {
+                Cosas = _readOnlyRepository.GetAll<Posts>().ToList()
+            };
+
+            return View(um);
+        }
 
         //Te envia a la pagina principal
         public ActionResult HomeScreen()
@@ -93,8 +117,6 @@ namespace MiPrimerMVC.Controllers
             
             post.Img2 = pm.Img2;
             post.Img3 = pm.Img3;
-            post.Img4 = pm.Img5;
-            post.Img6 = pm.Img6;
             post.Video = pm.Video;
 
             post.Tag1 = pm.Tag1;

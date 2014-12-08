@@ -1,0 +1,42 @@
+﻿@using Domain.Entities
+@model MiPrimerMVC.Models.PostModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" />
+<div class="container">
+
+    <h1>WATCH LIST</h1>
+    @foreach (Posts post in Model.Cosas)
+    {
+        <div class="well">
+            <div class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object" width="300" src="@post.Img1">
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">@post.Tittle</h4>
+                    <p class="text-right">By @post.OwnerName</p>
+                    <p>
+                        @post.Details
+                    </p>
+                    <ul class="list-inline list-unstyled">
+                        <li><span><i class="glyphicon glyphicon-calendar"></i> @post.Created.Date </span></li>
+                        <li>|</li>
+                        <span><i class="glyphicon glyphicon-comment"></i> 2 comments</span>
+                        <li>
+                            <span><i class="fa fa-facebook-square"></i></span>
+                            <span><i class="fa fa-twitter-square"></i></span>
+                            <span><i class="fa fa-google-plus-square"></i></span>
+                        </li>
+                        <li>
+                            @Html.ActionLink("Details", "Detalle", new { @id = @post.Id }, null)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>   
+    }
+</div>

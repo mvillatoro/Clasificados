@@ -111,7 +111,6 @@ namespace MiPrimerMVC.Controllers
             user.IsMaster = false;
             user.Archived = false;
             user.Created = DateTime.Today;
-            user.Views = 0;
 
             string cp = "ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvxyz0123456789";
             if (rm.Password.Any(c => !cp.Contains(c)))

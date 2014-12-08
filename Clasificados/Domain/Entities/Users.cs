@@ -15,14 +15,16 @@ namespace Domain.Entities
         public virtual string Mail { get; set; }
         public virtual string Password { get; set; }
         public virtual DateTime Created { get; set; }
-        public virtual int Views { get; set; }
         public virtual bool Archived { get; set; }
         public virtual bool IsMaster { get; set; }
+        
+        
         public virtual string Salt { get; set; }
         public virtual void Archive()
         {
             Archived = true;
         }
+
         public virtual bool CheckPassword(string password)
         {
             SHA512 hashtool = SHA512.Create();
