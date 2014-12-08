@@ -158,6 +158,7 @@
     <Content Include="Content\Contact.css" />
     <Content Include="Content\Images.css" />
     <Content Include="Content\Login.css" />
+    <Content Include="Content\NewSideBar.css" />
     <Content Include="Content\Register.css" />
     <Content Include="Content\SideBar.css" />
     <Content Include="Content\toastr.css" />
