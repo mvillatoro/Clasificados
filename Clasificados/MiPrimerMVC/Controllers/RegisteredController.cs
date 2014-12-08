@@ -78,18 +78,23 @@ namespace MiPrimerMVC.Controllers
             return View(pm);
         }
 
-        //Ver el detalle de un post 
-        public ActionResult Detalle(long id)
-        {
-            var detalle = _readOnlyRepository.GetById<Posts>(id);
-            return View(detalle);
-        }
+
 
         //Muestra los posts en la pantalla principal
         [HttpPost]
         public ActionResult HomeScreen(PostModel pm)
         {
             pm.Cosas = _readOnlyRepository.GetAll<Posts>().ToList();
+            return View(pm);
+        }
+
+        public ActionResult MyPostsView()
+        {
+            var pm = new PostModel
+            {
+                Cosas = _readOnlyRepository.GetAll<Posts>().ToList(),
+                Myid = Convert.ToInt32(Session["UserId"])
+            };
             return View(pm);
         }
 
@@ -130,6 +135,16 @@ namespace MiPrimerMVC.Controllers
             return RedirectToAction("HomeScreen");
         }
 
+
+        //Ver el detalle de un post 
+        public ActionResult Detalle(long id)
+        {
+            var detalle = _readOnlyRepository.GetById<Posts>(id);
+            
+           // return RedirectToAction("Detalle","Registered",id);
+            
+            return View(detalle);
+        }
 
         //Muestra el detalle
         [HttpPost]

@@ -205,6 +205,7 @@
     <Content Include="Views\Registered\AnswerView.cshtml" />
     <Content Include="Views\Registered\Featured.cshtml" />
     <Content Include="Views\Registered\WatchlistView.cshtml" />
+    <Content Include="Views\Registered\MyPostsView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">
