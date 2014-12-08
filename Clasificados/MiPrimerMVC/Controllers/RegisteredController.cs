@@ -23,6 +23,8 @@ namespace MiPrimerMVC.Controllers
                 _writeOnlyRepository = writeOnlyRepository;
             }
 
+
+        //Te envia a la pagina principal
         public ActionResult HomeScreen()
         {
 
@@ -34,11 +36,13 @@ namespace MiPrimerMVC.Controllers
             return View(pm);
         }
 
+        //Te envia a tu perfil
         public ActionResult UserProfile()
         {
             return View();
         }
 
+        //New Post
         public ActionResult NewPost()
         {
             var pm = new PostModel
@@ -50,12 +54,14 @@ namespace MiPrimerMVC.Controllers
             return View(pm);
         }
 
+        //Ver el detalle de un post 
         public ActionResult Detalle(long id)
         {
             var detalle = _readOnlyRepository.GetById<Posts>(id);
             return View(detalle);
         }
 
+        //Muestra los posts en la pantalla principal
         [HttpPost]
         public ActionResult HomeScreen(PostModel pm)
         {
@@ -63,6 +69,7 @@ namespace MiPrimerMVC.Controllers
             return View(pm);
         }
 
+        //Post Nuevo
         [HttpPost]
         public ActionResult NewPost(PostModel pm)
         {
@@ -101,6 +108,8 @@ namespace MiPrimerMVC.Controllers
             return RedirectToAction("HomeScreen");
         }
 
+
+        //Muestra el detalle
         [HttpPost]
         public ActionResult Detalle(PostModel pm)
         {

@@ -24,11 +24,6 @@ namespace MiPrimerMVC.Controllers
             _writeOnlyRepository = writeOnlyRepository;
         }
 
-        public ActionResult About()
-        {
-            return View();
-        }
-
         public ActionResult Contact()
         {
             var cm = new ContactModel

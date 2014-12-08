@@ -6,14 +6,9 @@
 <div class="jumbotron">
     <h1>Clasificados Etwas-Kreatives</h1>
     <h2> Your favorite trade plataform. Someone else's crap, can be yours!</h2>
-    <p class="btn btn-primary" >  &raquo;</p>
     
-    @Html.ActionLink("Register", "Register", "Guest")
-    
-    
-    <a href="<%: Url.Action(" Register", "Guest" ) %>
-        ">
-        <button>Button Text</button>
-    </a>
+    <a> @Html.ActionLink("Click here to register", "Register", "Guest") </a>
+    <h2>Or</h2>
+    <a> @Html.ActionLink("Login", "Login", "Guest") </a>
 
 </div>
