@@ -36,6 +36,7 @@ namespace MiPrimerMVC.Controllers
 
         public ActionResult Index()
         {
+            Session["User"] = null;
             return View();
         }
 
@@ -65,6 +66,7 @@ namespace MiPrimerMVC.Controllers
            
             Session["User"] = user.Name;
             Session["UserId"] = user.Id;
+            Session["Role"] = user.IsMaster;
             return RedirectToAction("HomeScreen", "Registered");
         }
 
@@ -92,9 +94,11 @@ namespace MiPrimerMVC.Controllers
             faq.Mail = cm.Mail;
             faq.Message = cm.Message;
             faq.IsAnswered = false;
+            
 
             _writeOnlyRepository.Create(faq);
             cm.Preguntas = _readOnlyRepository.GetAll<Contact>().ToList();
+            cm.User = Session["User"].ToString();
             return View(cm);
         }
 
@@ -110,7 +114,7 @@ namespace MiPrimerMVC.Controllers
             user.Password = rm.Password;
             user.IsMaster = false;
             user.Archived = false;
-            user.Created = DateTime.Today;
+            user.Created = DateTime.Now;
 
             string cp = "ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvxyz0123456789";
             if (rm.Password.Any(c => !cp.Contains(c)))

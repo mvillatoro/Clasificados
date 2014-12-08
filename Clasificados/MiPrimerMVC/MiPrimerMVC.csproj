@@ -170,6 +170,7 @@
     <Compile Include="Models\MessagesModel.cs" />
     <Compile Include="Models\PostModel.cs" />
     <Compile Include="Models\RegisteredModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -226,7 +227,6 @@
     <Content Include="Views\Registered\Featured.cshtml" />
     <Content Include="Views\Registered\WatchlistView.cshtml" />
     <Content Include="Views\Registered\MyPostsView.cshtml" />
-    <Content Include="Views\Registered\SentView.cshtml" />
     <Content Include="Views\Registered\InboxView.cshtml" />
     <Content Include="Views\Registered\OutboxView.cshtml" />
   </ItemGroup>

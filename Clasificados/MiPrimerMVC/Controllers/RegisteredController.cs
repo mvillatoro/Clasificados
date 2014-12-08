@@ -20,18 +20,6 @@ namespace MiPrimerMVC.Controllers
         readonly IReadOnlyRepository _readOnlyRepository;
         readonly IWriteOnlyRepository _writeOnlyRepository;
 
-
-        public void Tuilio()
-        {
-            string AccountSid = "AC8ab7cb90cd64afe27c1188f8e8100011";
-            string AuthToken = "0abcbaa1a03106130d7438539773ec72";
-
-            var twilio = new TwilioRestClient(AccountSid, AuthToken);
-            var message = twilio.SendMessage("+12017625616", "+50498701833", "Neat...");
-
-            Console.WriteLine(message.Sid); 
-        }
-
         public RegisteredController(IReadOnlyRepository readOnlyRepository, IWriteOnlyRepository writeOnlyRepository)
         {
             _readOnlyRepository = readOnlyRepository;
@@ -44,7 +32,8 @@ namespace MiPrimerMVC.Controllers
         {
             var pm = new PostModel
             {
-                Cosas = _readOnlyRepository.GetAll<Posts>().ToList()
+                Cosas = _readOnlyRepository.GetAll<Posts>().ToList(),
+                Role = Convert.ToBoolean(Session["Role"].ToString())
             };
 
             return View(pm);
@@ -55,7 +44,8 @@ namespace MiPrimerMVC.Controllers
         {
             var um = new PostModel
             {
-                Cosas = _readOnlyRepository.GetAll<Posts>().ToList()
+                Cosas = _readOnlyRepository.GetAll<Posts>().ToList(),
+                Role = Convert.ToBoolean(Session["Role"].ToString())
             };
 
             return View(um);
@@ -67,7 +57,8 @@ namespace MiPrimerMVC.Controllers
 
             var pm = new PostModel
             {
-                Cosas =  _readOnlyRepository.GetAll<Posts>().ToList()
+                Cosas = _readOnlyRepository.GetAll<Posts>().ToList(),
+                Role = Convert.ToBoolean(Session["Role"].ToString())
             };
 
             return View(pm);
@@ -84,7 +75,8 @@ namespace MiPrimerMVC.Controllers
         {
             var pm = new PostModel
             {
-                AllTags = _readOnlyRepository.GetAll<Tags>().ToList()
+                AllTags = _readOnlyRepository.GetAll<Tags>().ToList(),
+                Role = Convert.ToBoolean(Session["Role"].ToString())
 
             };
     
@@ -98,6 +90,7 @@ namespace MiPrimerMVC.Controllers
         public ActionResult HomeScreen(PostModel pm)
         {
             pm.Cosas = _readOnlyRepository.GetAll<Posts>().ToList();
+            pm.Role = Convert.ToBoolean(Session["Role"].ToString());
             return View(pm);
         }
 
@@ -106,7 +99,8 @@ namespace MiPrimerMVC.Controllers
             var pm = new PostModel
             {
                 Cosas = _readOnlyRepository.GetAll<Posts>().ToList(),
-                Myid = Convert.ToInt32(Session["UserId"])
+                Myid = Convert.ToInt32(Session["UserId"]),
+                Role = Convert.ToBoolean(Session["Role"].ToString())
             };
             return View(pm);
         }
@@ -125,17 +119,6 @@ namespace MiPrimerMVC.Controllers
         public ActionResult OutboxView()
         {
             return View();
-        }
-
-        public ActionResult SentView(MessagesModel mm)
-        {
-            mm = new MessagesModel()
-            {
-                MessageList = _readOnlyRepository.GetAll<Messages>().ToList(),
-                Myid = Convert.ToInt32(Session["UserId"])
-            };
-
-            return View(mm);
         }
 
         //Post Nuevo
@@ -170,8 +153,9 @@ namespace MiPrimerMVC.Controllers
             post.Archived = false;
 
             pm.AllTags = _readOnlyRepository.GetAll<Tags>().ToList();
+            
+            pm.Role = Convert.ToBoolean(Session["Role"].ToString());
 
-            Tuilio();
 
             _writeOnlyRepository.Create(post);
             return RedirectToAction("HomeScreen");
@@ -208,6 +192,16 @@ namespace MiPrimerMVC.Controllers
             nm.Archived = false;
 
             return RedirectToAction("HomeScreen");
+        }
+
+        public ActionResult Logout()
+        {
+
+            Session["User"] = null;
+            Session["UserId"] = null;
+            Session["Role"] = null;
+
+            return RedirectToAction("Index", "Guest");
         }
     }
 }

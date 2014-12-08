@@ -21,6 +21,7 @@ namespace MiPrimerMVC.Models
         public bool AdminArchived { get; set; }
         public bool IsFeatured { get; set; }
         public int Myid { get; set; }
+        public bool Role { get; set; } 
 
 
         public string Img1 { get; set; }

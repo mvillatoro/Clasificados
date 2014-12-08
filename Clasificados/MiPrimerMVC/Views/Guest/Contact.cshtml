@@ -1,8 +1,10 @@
 ﻿@using Domain.Entities
+@using Microsoft.Ajax.Utilities
 @model MiPrimerMVC.Models.ContactModel
 @{
     ViewBag.Title = "Contact";
-    Layout = "~/Views/Shared/_BasicLayout.cshtml";
+
+    Layout = Model.User == null ? "~/Views/Shared/_BasicLayout.cshtml" : "~/Views/Shared/_Layout.cshtml";
 }
 
 
@@ -10,7 +12,7 @@
 
 <div>
     <link href="~/Content/Contact.css" rel="stylesheet" />
-    <h1>@ViewBag.Title.</h1>
+    <h1>@ViewBag.Title</h1>
     <h3>@ViewBag.Message</h3>
 
 
