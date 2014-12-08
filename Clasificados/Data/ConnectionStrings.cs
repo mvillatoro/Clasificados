@@ -18,8 +18,8 @@ namespace Data
              * 
              * cambiar entre base de datos local y remota
              */
-            var connectionStringToUse = local;
-            //var connectionStringToUse = remote;
+            //var connectionStringToUse = local;
+            var connectionStringToUse = remote;
 
             if (environment == "qa" || environment == "remote")
             {
