@@ -1,5 +1,7 @@
 ﻿<!DOCTYPE html>
 <link href="~/Content/SideBar.css" rel="stylesheet" />
+<link href="~/Content/NewSideBar.css" rel="stylesheet" />
+
 <html>
 <head>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -10,8 +12,6 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 
-
-
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -21,12 +21,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Clasificados", "Index", "Guest", null, new { @class = "navbar-brand" })
+                @Html.ActionLink("Clasificados", "HomeScreen", "Registered", null, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Guest")</li>
+                    <li>@Html.ActionLink("Home", "HomeScreen", "Registered")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Guest")</li>
+                </ul>
+
+                <ul class="nav navbar-right">
+                    <li>@Html.ActionLink("Log out", "Logout", "Registered")</li>
                 </ul>
             </div>
         </div>
@@ -82,7 +86,7 @@
 
                         <li>
                             <a href="#">
-                                <i class="fa fa-user fa-lg"></i> @Html.ActionLink("My Profile", "UserProfile", "Registered")
+                                <i class="fa fa-user fa-lg"></i> @Html.ActionLink("Profile", "UserProfile", "Registered")
                             </a>
                         </li>
 
@@ -102,10 +106,10 @@
                             </li>
                         </ul>
 
-                        <li data-toggle="collapse" data-target="#products" class="collapsed active">
+                        <li data-toggle="collapse" data-target="#tags" class="collapsed active">
                             <a href="#"><i class="fa fa-gift fa-lg"></i> Categories <span class="arrow"></span></a>
                         </li>
-                        <ul class="sub-menu collapse" id="products">
+                        <ul class="sub-menu collapse" id="tags">
                             <li> <a href="#">Trade In Your Electronics</a></li>
                             <li><a href="#">Video Games</a></li>
                             <li><a href="#">Xbox</a></li>
@@ -116,6 +120,24 @@
                             <li><a href="#">Books</a></li>
                             <li><a href="#">Computer Parts & Components</a></li>
                             <li><a href="#">Laptops & Tablets</a></li>
+                        </ul>
+                        <li data-toggle="collapse" data-target="#Admin" class="collapsed active">
+                            <a href="#"><i class="fa fa-user-md fa-lg"></i> Admin Tools <span class="arrow"></span></a>
+                        </li>
+                        <ul class="sub-menu collapse" id="Admin">
+                            <li>
+                                <a href="#">
+                                    @Html.ActionLink("Answer FAQs", "AnswerFaq", "Admin")
+                                </a>
+                            </li>
+                            <li><a href="#">Ban User</a></li>
+                            <li>
+                                <a href="#">
+                                    @Html.ActionLink("Ban Post", "BanPost", "Admin")
+                                </a>
+                            </li>
+                            <li><a href="#">Manage Reports</a></li>
+                            <li><a href="#">Manage Tags</a></li>
                         </ul>
                     </ul>
                 </div>

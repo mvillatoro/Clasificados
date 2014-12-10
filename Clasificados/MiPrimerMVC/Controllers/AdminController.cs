@@ -10,6 +10,7 @@ using Domain.Services;
 using Domain.Entities;
 using MiPrimerMVC.Models;
 using NHibernate.Dialect.Function;
+using NHibernate.Type;
 using Twilio;
 
 namespace MiPrimerMVC.Controllers
@@ -61,5 +62,40 @@ namespace MiPrimerMVC.Controllers
             return RedirectToAction("HomeScreen", "Registered");
         }
 
+        public ActionResult AnswerFaq()
+        {
+            var cm = new ContactModel();
+            cm.Preguntas = _readOnlyRepository.GetAll<Contact>().ToList();
+
+            return View(cm);  
+        }
+
+
+        public ActionResult AnswerView(long id)
+        {
+            var faq = _readOnlyRepository.GetById<Contact>(id);
+
+            var cm = new ContactModel();
+            cm.Name = faq.Name;
+            cm.Id = id;
+            cm.Message = faq.Message;
+
+            return View(cm);
+        }
+
+        [HttpPost]
+        public ActionResult AnswerView(ContactModel cm)
+        {
+            var contact = new Contact();
+
+            contact.Id = cm.Id;
+            contact.Name = cm.Name;
+            contact.Mail = cm.Mail;
+            contact.Message = cm.Message;
+
+            contact.SetAnswered();
+            _writeOnlyRepository.Update(contact);
+            return RedirectToAction("HomeScreen", "Registered");
+        }
     }
 }

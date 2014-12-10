@@ -1,16 +1,21 @@
 ﻿@model MiPrimerMVC.Models.ContactModel
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_AuxLayout.cshtml";
 }
 
 <h1>Responer</h1>
-
-@using (Html.BeginForm("AnswerFaq", "Registered", null, FormMethod.Post))
+@using (Html.BeginForm("AnswerView", "Admin", null, FormMethod.Post))
 {
-    <p>Html.LabelFor(x=> x.Preguntas)</p>
-    <textarea class="form-control" id="Answer" name="Answer" placeholder="Enter sarcastic answer here..." rows="5"> </textarea>
-      <div class="col-md-12 text-right">
-                        <button class="btn btn-primary" type="submit">Enviar</button>
-                    </div>
     
+    <p>@Html.LabelFor(x=> x.Message)</p>
+    <p>@Html.ViewData.Model.Message</p>
+    <p>@Html.LabelFor(x => x.Name)</p>
+    <p>@Html.ViewData.Model.Name</p>
+
+
+    <textarea class="form-control" id="Answer" name="Answer" placeholder="Enter sarcastic answer here..." rows="5"> </textarea>
+
+    <div class="col-md-12 text-right">
+        <button class="btn btn-primary" type="submit">Enviar</button>
+    </div>
 }

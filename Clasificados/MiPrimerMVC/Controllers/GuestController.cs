@@ -64,7 +64,7 @@ namespace MiPrimerMVC.Controllers
             }
             if (!user.CheckPassword(lm.Password))return View(new LoginModel());
            
-            Session["User"] = user.Name;
+            Session["User"] = user.Name + " " +user.LastName;
             Session["UserId"] = user.Id;
             Session["Role"] = user.IsMaster;
             return RedirectToAction("HomeScreen", "Registered");
@@ -98,7 +98,6 @@ namespace MiPrimerMVC.Controllers
 
             _writeOnlyRepository.Create(faq);
             cm.Preguntas = _readOnlyRepository.GetAll<Contact>().ToList();
-            cm.User = Session["User"].ToString();
             return View(cm);
         }
 

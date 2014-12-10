@@ -1,19 +1,20 @@
 ﻿@using Domain.Entities
 @model MiPrimerMVC.Models.ContactModel
 @{
-    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+    Layout = "~/Views/Shared/_AuxLayout.cshtml";
 }
 
-@foreach (Contact faq in Model.Preguntas)
+<h1>ANSWER FAQS</h1>
+@foreach (var faq in Model.Preguntas)
 {    
     if (!@faq.IsAnswered)
     { 
-        using (Html.BeginForm("AnswerFaq", "Registered", null, FormMethod.Post))
+        using (Html.BeginForm("AnswerFaq", "Admin", null))
         {
             <div class="well">
                 <h3>@faq.Message</h3>
                 <p>By @faq.Name</p>
-                @Html.ActionLink("Answer Quesion", "AnswerFaq", new { @id = @faq.Id }, null)
+                @Html.ActionLink("Answer Quesion", "AnswerView","Admin", new { @id = @faq.Id }, null)
            </div>
        }
     }

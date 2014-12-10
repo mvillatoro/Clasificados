@@ -8,6 +8,7 @@ namespace MiPrimerMVC.Models
 {
     public class ContactModel
     {
+        public long Id { get; set; }
         public string Name { get; set; }
         public string Mail { get; set; }
         public string Message { get; set; }

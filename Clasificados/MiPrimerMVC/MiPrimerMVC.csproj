@@ -223,8 +223,8 @@
     <Content Include="Views\Shared\_MasterLayout.cshtml" />
     <Content Include="Views\Registered\NewPost.cshtml" />
     <Content Include="Views\Registered\Detalle.cshtml" />
-    <Content Include="Views\Registered\AnswerFaq.cshtml" />
-    <Content Include="Views\Registered\AnswerView.cshtml" />
+    <Content Include="Views\Admin\AnswerFaq.cshtml" />
+    <Content Include="Views\Admin\AnswerView.cshtml" />
     <Content Include="Views\Registered\Featured.cshtml" />
     <Content Include="Views\Registered\WatchlistView.cshtml" />
     <Content Include="Views\Registered\MyPostsView.cshtml" />
@@ -232,6 +232,7 @@
     <Content Include="Views\Registered\OutboxView.cshtml" />
     <Content Include="Views\Registered\EditMode.cshtml" />
     <Content Include="Views\Admin\BanPost.cshtml" />
+    <Content Include="Views\Shared\_AuxLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">

@@ -19,5 +19,10 @@ namespace Domain.Entities
         {
             Archived = true;
         }
+
+        public virtual void SetAnswered()
+        {
+            IsAnswered = true;
+        }
     }
 }

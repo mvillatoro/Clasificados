@@ -1,5 +1,4 @@
-﻿@using Domain.Entities
-@model MiPrimerMVC.Models.PostModel
+﻿@model MiPrimerMVC.Models.PostModel
 <!DOCTYPE html>
 <link href="~/Content/SideBar.css" rel="stylesheet" />
 <link href="~/Content/NewSideBar.css" rel="stylesheet" />
@@ -130,7 +129,11 @@
                                 <a href="#"><i class="fa fa-user-md fa-lg"></i> Admin Tools <span class="arrow"></span></a>
                             </li>
                             <ul class="sub-menu collapse" id="Admin">
-                                <li> <a href="#">Answer FAQs</a></li>
+                                <li>
+                                    <a href="#">
+                                        @Html.ActionLink("Answer FAQs", "AnswerFaq", "Admin")  
+                                    </a>
+                                </li>
                                 <li><a href="#">Ban User</a></li> 
                                 <li>
                                     <a href="#">
