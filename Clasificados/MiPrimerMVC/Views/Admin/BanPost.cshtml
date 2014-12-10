@@ -1,6 +1,5 @@
 ﻿@using Domain.Entities
 @model MiPrimerMVC.Models.PostModel
-
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -8,10 +7,10 @@
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" />
 <div class="container">
 
-    <h1>WATCH LIST</h1>
-    if(post.Archived == false && post.AdminArchived == false)
+    <h1>POSTS FEED</h1>
+    @foreach (Posts post in Model.Cosas)
     {
-        @foreach (Posts post in Model.Cosas)
+        if( @post.WasFlaged==true)
         {
             <div class="well">
                 <div class="media">
@@ -34,7 +33,11 @@
                                 <span><i class="fa fa-google-plus-square"></i></span>
                             </li>
                             <li>
-                                @Html.ActionLink("Details", "Detalle", new { @id = @post.Id }, null)
+                                @Html.ActionLink("Details", "Detalle", "Registered", new { @id = @post.Id }, null)                            
+                            </li>
+                        
+                            <li>
+                                @Html.ActionLink("Disable as Admin", "AdminDisableEnable", new { @id = @post.Id }, null)
                             </li>
                         </ul>
                     </div>

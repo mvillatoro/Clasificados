@@ -88,7 +88,7 @@
                         
                         <li>
                             <a href="#">
-                                <i class="fa fa-user fa-lg"></i> Profile
+                                <i class="fa fa-user fa-lg"></i> @Html.ActionLink("Profile", "UserProfile", "Registered")
                             </a>
                         </li>
                         
@@ -131,8 +131,12 @@
                             </li>
                             <ul class="sub-menu collapse" id="Admin">
                                 <li> <a href="#">Answer FAQs</a></li>
-                                <li><a href="#">Ban User</a></li>
-                                <li><a href="#">Ban Post</a></li>
+                                <li><a href="#">Ban User</a></li> 
+                                <li>
+                                    <a href="#">
+                                      @Html.ActionLink("Ban Post", "BanPost", "Admin")  
+                                    </a>
+                                </li> 
                                 <li><a href="#">Manage Reports</a></li>
                                 <li><a href="#">Manage Tags</a></li>
                             </ul> 

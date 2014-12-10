@@ -1,0 +1,58 @@
+﻿@using Domain.Entities
+@model MiPrimerMVC.Models.PostModel
+@{    ViewBag.Title = "Edit Post";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/Images.css" rel="stylesheet" />
+
+    <h1>Detalle </h1>
+    @using (Html.BeginForm("NewPost", "Registered", null, FormMethod.Post))
+    {
+        <div class="well">
+            <label class="col-md-3 control-label" for="Tittle">Post Tittle</label>
+            <div class="col-md-9">
+                <input id="Tittle" name="Tittle" type="text" placeholder="@Html.ValueFor(x => x.Tittle)" class="form-control" required />
+            </div>
+
+            <label class="col-md-3 control-label" for="Details">Details</label>
+            <div class="col-md-9">
+                <textarea id="Details" name="Details" placeholder="@Html.ValueFor(x => x.Details) " class="form-control"></textarea>
+            </div>
+
+            <label class="col-md-3 control-label" for="Price">Price</label>
+            <div class="col-md-9">
+                <input id="Price" name="Price" type="number" placeholder="@Html.ValueFor(x => x.Price) " class="form-control" required />
+            </div>
+            <label class="col-md-3 control-label" for="BussType">Negociacion</label>
+            <div class="col-md-9">
+                <input id="BussType" name="BussType" type="text" placeholder="Como va a ser la negociacion" class="form-control" required />
+            </div>
+
+            <label class="col-md-3 control-label" for="Img1">Front Image </label>
+            <div class="col-md-9">
+                <input id="Tag3" name="Img1" type="text" placeholder="Image URL" class="form-control">
+            </div>
+            <label class="col-md-3 control-label" for="Img2">Image</label>
+            <div class="col-md-9">
+                <input id="Tag3" name="Img2" type="text" placeholder="Image URL" class="form-control">
+            </div>
+            <label class="col-md-3 control-label" for="Img3">Image</label>
+            <div class="col-md-9">
+                <input id="Tag3" name="Img3" type="text" placeholder="Image URL" class="form-control">
+            </div>
+            <label class="col-md-3 control-label" for="Video">Video</label>
+            <div class="col-md-9">
+                <input id="Tag3" name="Video" type="text" placeholder="Video URL" class="form-control">
+            </div>
+    
+
+    <button class="btn btn-primary" type="submit">SAVE!</button>
+            
+
+            <ul>
+                <li>
+                    @Html.ActionLink("Disable", "DisableEnable", "Registered" ,new { @id = @Html.ValueFor(x => x.Id) }, null)
+                </li>
+            </ul>
+        </div>
+}

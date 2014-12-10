@@ -8,6 +8,7 @@ namespace MiPrimerMVC.Models
 {
     public class PostModel
     {
+        public int Id { get; set; }
         public string Tittle { get; set; }
         public string Details { get; set; }
         public string OwnerId { get; set; }
@@ -20,6 +21,8 @@ namespace MiPrimerMVC.Models
         public bool Archived { get; set; }
         public bool AdminArchived { get; set; }
         public bool IsFeatured { get; set; }
+        public bool WasFlaged { get; set; }
+
         public int Myid { get; set; }
         public bool Role { get; set; } 
 

@@ -1,6 +1,4 @@
-﻿@using Microsoft.Ajax.Utilities
-
-@model Domain.Entities.Posts
+﻿@model MiPrimerMVC.Models.PostModel
 @{    ViewBag.Title = "Detalle del Post";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -9,16 +7,16 @@
 <h1>Detalle </h1>
 <div class="well">
     <a class="pull-left">
-        <img height="300" width="500" class="media-object" src="@Html.ValueFor(x => x.Img1)">
+        <img width="300" class="media-object" src="@Html.ValueFor(x => x.Img1)">
     </a>
     <a class="pull-left">
-         <img height="300" width="500" class="media-object" src="@Html.ValueFor(x => x.Img2)">
+         <img width="300" class="media-object" src="@Html.ValueFor(x => x.Img2)">
     </a>
     <a class="pull-left">
-         <img height="300" width="500" class="media-object" src="@Html.ValueFor(x => x.Img3)">
+         <img width="300" class="media-object" src="@Html.ValueFor(x => x.Img3)">
     </a>
     <a class="pull-left">
-        <video height="300" width="500" src="@Html.ValueFor(x => x.Video)"></video>
+        <video width="300" src="@Html.ValueFor(x => x.Video)"></video>
     </a>
 
     <h2>@Html.ValueFor(x=> x.Tittle) </h2>
@@ -28,12 +26,17 @@
     @Html.LabelFor(x => x.Created)
     <p>@Html.ValueFor(x => x.Created) </p>
     
-  @using (Html.BeginForm("Detalle", "Registered", null, FormMethod.Post))
-{
+    <ul>
+        <li>
+            @Html.ActionLink("Edit", "EditMode", new { @id = @Html.ValueFor(x => x.Id) }, null)
+        </li>
+    </ul>
+
+    @using (Html.BeginForm("Detalle", "Registered", null, FormMethod.Post))
+    {
         <form class="form-horizontal" action="" method="post">
             <fieldset>
                 <legend class="text-center">Contact Seller</legend>
-
                 <!-- Name input-->
                 <div class="form-group">
                     <label class="col-md-3 control-label" for="name">Name</label>

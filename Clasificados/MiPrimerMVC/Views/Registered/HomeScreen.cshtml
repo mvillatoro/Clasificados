@@ -10,6 +10,8 @@
     <h1>POSTS FEED</h1>
 @foreach (Posts post in Model.Cosas)
 {
+if(post.Archived == false && post.AdminArchived == false)
+    { 
     <div class="well">
         <div class="media">
             <a class="pull-left" href="#">
@@ -31,11 +33,18 @@
                         <span><i class="fa fa-google-plus-square"></i></span>
                     </li>
                     <li>
-                        @Html.ActionLink(@post.Id.ToString(), "Detalle", new { @id = @post.Id }, null)
+                        
+                        @Html.ActionLink("Details", "Detalle", @post, null)
                     </li>
+
+                    <li>
+                        @Html.ActionLink("Flag", "FlagPost", "Registered", new { @id = @post.Id }, null)
+                    </li>
+
                 </ul>
             </div>
         </div>
     </div>
+     }
 }
 </div>

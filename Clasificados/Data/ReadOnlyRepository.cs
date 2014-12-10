@@ -36,7 +36,7 @@ namespace Data
             return item;
         }
 
-        public T GetById<T>(long id) where T : IEntity
+        public T GetById<T>(long id)
         {
             var item = _session.Get<T>(id);
 

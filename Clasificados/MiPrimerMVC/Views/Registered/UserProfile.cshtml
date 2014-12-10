@@ -1,11 +1,13 @@
-﻿@{
+﻿@using Domain.Entities
+@model MiPrimerMVC.Models.PostModel
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" />
 <div class="container">
 
-    <h1>NEW POSTS</h1>
+    <h1>My Profile</h1>
     <div class="well">
         <div class="media">
             <a class="pull-left" href="#">
@@ -45,4 +47,53 @@
             </div>
         </div>
     </div>
+    
+    <h1>My Posts</h1>
+
+    @foreach (Posts post in Model.Cosas)
+    {
+        if (@post != null && @post.OwnerId == Model.Myid)
+        {
+            <div class="well">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object" width="300" src="@post.Img1">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">@post.Tittle</h4>
+                        <p class="text-right">By @post.OwnerName</p>
+                        <p>
+                            @post.Details
+                        </p>
+                        <ul class="list-inline list-unstyled">
+                            <li><span><i class="glyphicon glyphicon-calendar"></i> @post.Created.Date </span></li>
+                            <li>|</li>
+                            <span><i class="glyphicon glyphicon-comment"></i> 2 comments</span>
+                            <li>
+                                <span><i class="fa fa-facebook-square"></i></span>
+                                <span><i class="fa fa-twitter-square"></i></span>
+                                <span><i class="fa fa-google-plus-square"></i></span>
+                            </li>
+
+                            if(post.Archived == true)
+                            {
+                            <button class="btn-danger">This post is disabled </button>
+                            }
+                            
+                            if(post.AdminArchived == true)
+                            {
+                            <button class="btn-danger">This post was disabled by the admins</button>
+                            }
+
+                            <li>
+                                @Html.ActionLink(@post.Id.ToString(), "Detalle", new { @id = @post.Id }, null)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+
 </div>

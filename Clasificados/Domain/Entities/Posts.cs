@@ -18,11 +18,12 @@ namespace Domain.Entities
         public virtual string BussType { get; set; }
 
 
-        public virtual int Views { get; set; }
+        //public virtual int Views { get; set; }
         public virtual DateTime Created { get; set; }
         public virtual bool Archived { get; set; }
         public virtual bool AdminArchived { get; set; }
         public virtual bool IsFeatured { get; set; }
+        public virtual bool WasFlaged { get; set; }
 
 
         public virtual string Img1 { get; set; }
@@ -40,5 +41,24 @@ namespace Domain.Entities
             Archived = true;
         }
 
+        public virtual void UnArchive()
+        {
+            Archived = false;
+        }
+
+        public virtual void AdminArchive()
+        {
+            AdminArchived = true;
+        }
+
+        public virtual void AdminUnArchive()
+        {
+            AdminArchived = false;
+        }
+
+        public virtual void Flag()
+        {
+            WasFlaged = true;
+        }
     }
 }

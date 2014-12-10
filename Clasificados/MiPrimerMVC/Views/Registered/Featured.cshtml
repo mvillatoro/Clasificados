@@ -7,11 +7,13 @@
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" />
 <div class="container">
 
-    <h1>FEATURED POSTS</h1>
-    @foreach (Posts post in Model.Cosas)
+<h1>FEATURED POSTS</h1>
+@foreach (Posts post in Model.Cosas)
+{
+    if (post.Archived == false && post.AdminArchived == false)
     {
-        if (@post != null && @post.IsFeatured)
-        { 
+        if (@post.IsFeatured)
+        {
             <div class="well">
                 <div class="media">
                     <a class="pull-left" href="#">
@@ -41,4 +43,5 @@
             </div>
         }
     }
+}
 </div>

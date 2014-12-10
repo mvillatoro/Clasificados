@@ -160,6 +160,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\GuestController.cs" />
     <Compile Include="Controllers\RegisteredController.cs" />
     <Compile Include="Global.asax.cs">
@@ -229,6 +230,8 @@
     <Content Include="Views\Registered\MyPostsView.cshtml" />
     <Content Include="Views\Registered\InboxView.cshtml" />
     <Content Include="Views\Registered\OutboxView.cshtml" />
+    <Content Include="Views\Registered\EditMode.cshtml" />
+    <Content Include="Views\Admin\BanPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">
