@@ -24,11 +24,11 @@ namespace Domain.Entities
             Archived = true;
         }
 
-        public virtual List<Users> Following { get; set; } 
-        public virtual void AddFollowing(Users user)
-        {
-            Following.Add(user);
-        }
+        //public virtual List<Users> Following { get; set; } 
+        //public virtual void AddFollowing(Users user)
+        //{
+        //    Following.Add(user);
+        //}
 
         public virtual bool CheckPassword(string password)
         {

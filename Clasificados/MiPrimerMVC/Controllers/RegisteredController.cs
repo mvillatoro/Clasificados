@@ -287,7 +287,7 @@ namespace MiPrimerMVC.Controllers
         {
             var me = _readOnlyRepository.GetById<Users>((long) Session["UserId"]);
             var user = _readOnlyRepository.GetById<Users>(id);
-            user.AddFollowing(user);
+            //user.AddFollowing(user);
 
             _writeOnlyRepository.Update(me);
             return RedirectToAction("HomeScreen");
