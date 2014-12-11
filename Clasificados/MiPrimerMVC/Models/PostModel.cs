@@ -11,8 +11,10 @@ namespace MiPrimerMVC.Models
         public int Id { get; set; }
         public string Tittle { get; set; }
         public string Details { get; set; }
+
         public string OwnerId { get; set; }
         public string OwnerName { get; set; }
+        
         public int Price { get; set; }
         public string BussType { get; set; }
 

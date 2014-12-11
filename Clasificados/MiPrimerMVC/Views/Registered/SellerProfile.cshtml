@@ -6,11 +6,16 @@
 
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" />
 <div class="container">
+    @{
+        var user = Model.OwnerName;
+    }
 
-    <h1>FEATURED POSTS</h1>
+    <h1>
+        @user
+    </h1>
     @foreach (Posts post in Model.Cosas)
     {
-        if (@post != null && @post.OwnerId == Model.Myid)
+        if (@post.OwnerId == Model.Myid && post.Archived==false)
         {
             <div class="well">
                 <div class="media">
@@ -32,14 +37,17 @@
                                 <span><i class="fa fa-twitter-square"></i></span>
                                 <span><i class="fa fa-google-plus-square"></i></span>
                             </li>
-                            
+
                             @if(@post.Archived == true || @post.AdminArchived == true)
                             {
                             <button class="btn-danger">This post is disabled </button>
                             }
 
                             <li>
-                                @Html.ActionLink(@post.Id.ToString(), "Detalle", new { @id = @post.Id }, null)
+                                @Html.ActionLink("Details", "Detalle", new { @id = @post.Id }, null)
+                            </li>
+                            <li>
+                                @Html.ActionLink("Follow", "NewFollow", new { @id = @post.Id }, null)
                             </li>
                         </ul>
                     </div>

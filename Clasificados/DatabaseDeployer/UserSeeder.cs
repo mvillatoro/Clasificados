@@ -18,9 +18,6 @@ namespace DatabaseDeployer
 
         public void Seed()
         {
-
-
-
             var muser = new Users
             {
                 Name = "Mario",

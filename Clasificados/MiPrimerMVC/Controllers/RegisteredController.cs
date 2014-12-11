@@ -19,6 +19,7 @@ namespace MiPrimerMVC.Controllers
 
         readonly IReadOnlyRepository _readOnlyRepository;
         readonly IWriteOnlyRepository _writeOnlyRepository;
+        Twilio sms = new Twilio();
 
         public RegisteredController(IReadOnlyRepository readOnlyRepository, IWriteOnlyRepository writeOnlyRepository)
         {
@@ -67,6 +68,8 @@ namespace MiPrimerMVC.Controllers
         public ActionResult HomeScreen()
         {
             CheckSession();
+
+            sms.MensajeTwilio("A new Post have been created by " + Session["User"]);
 
             var pm = new PostModel
             {
@@ -157,6 +160,15 @@ namespace MiPrimerMVC.Controllers
         }
 
         [HttpPost]
+        public ActionResult Detalle(PostModel pm)
+        {
+            var post = _readOnlyRepository.GetById<Posts>(pm.Id);
+
+            _writeOnlyRepository.Update(post);
+            return RedirectToAction("HomeScreen");
+        }
+
+        [HttpPost]
         public ActionResult NewPost(PostModel pm)
         {
             CheckSession();
@@ -190,10 +202,7 @@ namespace MiPrimerMVC.Controllers
             post.Archived = false;
 
             pm.AllTags = _readOnlyRepository.GetAll<Tags>().ToList();
-
             pm.Role = Convert.ToBoolean(Session["Role"].ToString());
-
-
             _writeOnlyRepository.Create(post);
             return RedirectToAction("HomeScreen");
         }
@@ -255,11 +264,32 @@ namespace MiPrimerMVC.Controllers
         {
             var post = _readOnlyRepository.GetById<Posts>(id);
 
-            if (post.WasFlaged == false)
+            if (post.WasFlaged == false)    
                 post.Flag();
             
             _writeOnlyRepository.Update(post);
 
+            return RedirectToAction("HomeScreen");
+        }
+
+        public ActionResult SellerProfile(long id)
+        {
+            var pm = new PostModel();
+            var user = _readOnlyRepository.GetById<Users>(id);
+            pm.Cosas = _readOnlyRepository.GetAll<Posts>().ToList();
+            pm.Myid = (int) user.Id;
+            pm.OwnerName = user.Name + " " + user.LastName;
+            return View(pm);
+        }
+
+
+        public ActionResult NewFollow(long id)
+        {
+            var me = _readOnlyRepository.GetById<Users>((long) Session["UserId"]);
+            var user = _readOnlyRepository.GetById<Users>(id);
+            user.AddFollowing(user);
+
+            _writeOnlyRepository.Update(me);
             return RedirectToAction("HomeScreen");
         }
     }

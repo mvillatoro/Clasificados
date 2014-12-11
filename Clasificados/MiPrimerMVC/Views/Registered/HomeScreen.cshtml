@@ -40,7 +40,9 @@ if(post.Archived == false && post.AdminArchived == false)
                     <li>
                         @Html.ActionLink("Flag", "FlagPost", "Registered", new { @id = @post.Id }, null)
                     </li>
-
+                    <li>
+                        @Html.ActionLink("Go to user", "SellerProfile", "Registered", new { @id = @post.OwnerId }, null)
+                    </li>
                 </ul>
             </div>
         </div>

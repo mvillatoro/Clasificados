@@ -171,8 +171,8 @@
     <Compile Include="Models\MessagesModel.cs" />
     <Compile Include="Models\PostModel.cs" />
     <Compile Include="Models\RegisteredModel.cs" />
-    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Twilio.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -233,6 +233,7 @@
     <Content Include="Views\Registered\EditMode.cshtml" />
     <Content Include="Views\Admin\BanPost.cshtml" />
     <Content Include="Views\Shared\_AuxLayout.cshtml" />
+    <Content Include="Views\Registered\SellerProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">

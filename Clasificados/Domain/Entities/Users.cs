@@ -17,12 +17,17 @@ namespace Domain.Entities
         public virtual DateTime Created { get; set; }
         public virtual bool Archived { get; set; }
         public virtual bool IsMaster { get; set; }
-        
-        
+
         public virtual string Salt { get; set; }
         public virtual void Archive()
         {
             Archived = true;
+        }
+
+        public virtual List<Users> Following { get; set; } 
+        public virtual void AddFollowing(Users user)
+        {
+            Following.Add(user);
         }
 
         public virtual bool CheckPassword(string password)
